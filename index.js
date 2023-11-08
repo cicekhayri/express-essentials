@@ -13,6 +13,12 @@ app.get("/", (request, response) => {
   response.json(data);
 });
 
+app.get("/class/:id", (request, response) => {
+  const studentId = Number(request.params.id);
+  const student = data.filter((student) => student.id === studentId);
+  response.send(student);
+});
+
 app.post("/create", (request, response) => {
   response.send("This is a POST request at /create");
 });
@@ -27,5 +33,4 @@ app.delete("/delete", (request, response) => {
 
 app.listen(PORT, () => {
   console.log(`The server is running on ${PORT}!`);
-  console.log(data);
 });
