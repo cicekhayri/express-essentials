@@ -32,6 +32,18 @@ app.get("/redirect", (request, response) => {
   response.redirect("https://www.linkedin.com");
 });
 
+app
+  .route("/class")
+  .get((request, response) => {
+    response.send("Retrieve class info");
+  })
+  .post((request, response) => {
+    response.send("Create class info");
+  })
+  .put((request, response) => {
+    response.send("Update class info");
+  });
+
 app.get("/class/:id", (request, response) => {
   const studentId = Number(request.params.id);
   const student = data.filter((student) => student.id === studentId);
