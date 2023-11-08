@@ -13,6 +13,17 @@ app.get("/", (request, response) => {
   response.json(data);
 });
 
+app.get(
+  "/next",
+  (request, response, next) => {
+    console.log("The response will be sent by next function");
+    next();
+  },
+  (request, response) => {
+    response.send("I just set up a route with a second callback");
+  }
+);
+
 app.get("/class/:id", (request, response) => {
   const studentId = Number(request.params.id);
   const student = data.filter((student) => student.id === studentId);
