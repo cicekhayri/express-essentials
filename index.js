@@ -9,8 +9,16 @@ app.use(express.static("public"));
 
 app.use("/images", express.static("images"));
 
+// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (request, response) => {
   response.json(data);
+});
+
+app.post("/item", (request, response) => {
+  console.log(request.body);
+  response.send(request.body);
 });
 
 app.get(
