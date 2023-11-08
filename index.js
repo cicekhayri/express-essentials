@@ -24,6 +24,14 @@ app.get(
   }
 );
 
+app.get("/download", (request, response) => {
+  response.download("images/mountains_2.jpeg");
+});
+
+app.get("/redirect", (request, response) => {
+  response.redirect("https://www.linkedin.com");
+});
+
 app.get("/class/:id", (request, response) => {
   const studentId = Number(request.params.id);
   const student = data.filter((student) => student.id === studentId);
